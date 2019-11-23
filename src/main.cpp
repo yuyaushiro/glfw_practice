@@ -44,20 +44,16 @@ int main(int argc, const char *argv[])
     // 画面を塗りつぶす
     glClear(GL_COLOR_BUFFER_BIT);
 
-    // 描画する点のX座標とY座標を配列で用意
-    static const GLfloat vtx[] = {0.0f, 0.0f};
+    static const GLfloat vtx[] = {-0.5f, -0.5f, 0.5f, 0.5f};
 
-    // 描画に使う頂点の配列をOpenGLに指示
     glVertexPointer(2, GL_FLOAT, 0, vtx);
 
-    // 描画する店の大きさを指定
-    glPointSize(4.0f);
+    glLineWidth(4.0f);
 
-    // 頂点配列で描画するモードに切り替えて点の描画を開始
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+
     glEnableClientState(GL_VERTEX_ARRAY);
-    glDrawArrays(GL_POINTS, 0, 1);
-
-    // 描画が終わったら描画モードをもとに戻す
+    glDrawArrays(GL_LINES, 0, 2);
     glDisableClientState(GL_VERTEX_ARRAY);
 
     // 上記描画した図形を表画面のバッファにスワップする
