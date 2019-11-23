@@ -36,29 +36,29 @@ int main(int argc, const char *argv[])
   }
 
   // 背景色設定
-  glClearColor(1.0, 1.0, 1.0, 0.0);
-
-  // ビューポートを設定する
-  glViewport(100, 50, 300, 300);
+  glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
   // 描画のループ
   while (!glfwWindowShouldClose(window))
   {
-
     // 画面を塗りつぶす
     glClear(GL_COLOR_BUFFER_BIT);
 
-    // 描画
-    {
-      glColor3d(0.0, 0.0, 0.0);
-      glLineWidth(2.0f);
-      glBegin(GL_LINE_LOOP);
-      glVertex2d(-0.5, -0.5);
-      glVertex2d(0.5, -0.5);
-      glVertex2d(0.5, 0.5);
-      glVertex2d(-0.5, 1.0);
-      glEnd();
-    }
+    // 描画する点のX座標とY座標を配列で用意
+    static const GLfloat vtx[] = {0.0f, 0.0f};
+
+    // 描画に使う頂点の配列をOpenGLに指示
+    glVertexPointer(2, GL_FLOAT, 0, vtx);
+
+    // 描画する店の大きさを指定
+    glPointSize(4.0f);
+
+    // 頂点配列で描画するモードに切り替えて点の描画を開始
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glDrawArrays(GL_POINTS, 0, 1);
+
+    // 描画が終わったら描画モードをもとに戻す
+    glDisableClientState(GL_VERTEX_ARRAY);
 
     // 上記描画した図形を表画面のバッファにスワップする
     glfwSwapBuffers(window);
