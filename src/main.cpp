@@ -44,17 +44,15 @@ int main(int argc, const char *argv[])
     // 画面を塗りつぶす
     glClear(GL_COLOR_BUFFER_BIT);
 
-    static const GLfloat vtx[] = {-0.5f, -0.5f, 0.5f, 0.5f};
+    {
+      static const GLfloat vtx[] = {-0.9f, -0.9f, 0.9f, -0.9f, 0.9f, 0.9f, -0.9f, 0.9f};
+      glVertexPointer(2, GL_FLOAT, 0, vtx);
+      glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 
-    glVertexPointer(2, GL_FLOAT, 0, vtx);
-
-    glLineWidth(4.0f);
-
-    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glDrawArrays(GL_LINES, 0, 2);
-    glDisableClientState(GL_VERTEX_ARRAY);
+      glEnableClientState(GL_VERTEX_ARRAY);
+      glDrawArrays(GL_LINE_LOOP, 0, 4);
+      glDisableClientState(GL_VERTEX_ARRAY);
+    }
 
     // 上記描画した図形を表画面のバッファにスワップする
     glfwSwapBuffers(window);
