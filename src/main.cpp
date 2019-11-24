@@ -38,6 +38,9 @@ int main(int argc, const char *argv[])
   // 背景色設定
   glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
+  // ビューポートを設定する
+  glViewport(100, 50, 300, 300);
+
   // 描画のループ
   while (!glfwWindowShouldClose(window))
   {
@@ -45,7 +48,10 @@ int main(int argc, const char *argv[])
     glClear(GL_COLOR_BUFFER_BIT);
 
     {
-      static const GLfloat vtx[] = {-0.9f, -0.9f, 0.9f, -0.9f, 0.9f, 0.9f, -0.9f, 0.9f};
+      static const GLfloat vtx[] = {-0.9f, -0.9f,
+                                    0.9f, -0.9f,
+                                    0.9f, 0.9f,
+                                    -0.9f, 0.9f};
       glVertexPointer(2, GL_FLOAT, 0, vtx);
       glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 
