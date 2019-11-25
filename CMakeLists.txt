@@ -14,5 +14,6 @@ include_directories(include)
 
 add_executable(glfw_app.out
   src/main.cpp
+  src/window.cpp
 )
 target_link_libraries(glfw_app.out ${GLFW_LIBRARIES} ${OPENGL_LIBRARY} ${GLEW_LIBRARIES})
