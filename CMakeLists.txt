@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project(GLFW)
+project(glfw_practice)
 
 add_compile_options("-std=c++14")
 
@@ -14,5 +14,6 @@ include_directories(include)
 
 add_executable(glfw_app.out
   src/main.cpp
+  src/window.cpp
 )
 target_link_libraries(glfw_app.out ${GLFW_LIBRARIES} ${OPENGL_LIBRARY} ${GLEW_LIBRARIES})
